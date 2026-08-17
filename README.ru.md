@@ -39,7 +39,7 @@ npm run install-script
 ## Разработка
 
 ```bash
-npm run build       # сборка dist/markedit-pdf-export-pretty.cjs
+npm run build       # сборка dist/markedit-pdf-export-pretty.js
 npm run typecheck   # проверка типов
 npm run smoke       # headless-рендер test/fixture.md → test/smoke-output.pdf
 ```

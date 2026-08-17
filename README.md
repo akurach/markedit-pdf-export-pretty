@@ -39,7 +39,7 @@ Then restart MarkEdit.
 ## Development
 
 ```bash
-npm run build       # build dist/markedit-pdf-export-pretty.cjs
+npm run build       # build dist/markedit-pdf-export-pretty.js
 npm run typecheck   # type check
 npm run smoke       # headless render of test/fixture.md → test/smoke-output.pdf
 ```
