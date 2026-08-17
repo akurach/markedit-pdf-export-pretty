@@ -4,7 +4,7 @@ import { renderMarkdown } from './markdown';
 import { buildPdf, registerFonts } from './pdf';
 import { getConfig, loadConfig, saveConfig } from './config';
 import type { ExtensionConfig } from './config';
-import { scanFontFamilies, loadFontFamily } from './fonts';
+import { scanFontFamilies, loadFontFamily, isLikelyMonospace } from './fonts';
 import type { FontFamily } from './fonts';
 
 let exporting = false;
@@ -80,11 +80,21 @@ async function buildMenu(): Promise<void> {
 
   const submenu = (key: 'fontFamily' | 'codeFontFamily'): MenuItem[] => {
     const items: MenuItem[] = [fontMenuItem(key, undefined), { separator: true }];
-    if (families.length > 0) {
-      items.push(...families.map((f) => fontMenuItem(key, f)));
-    } else {
+    if (families.length === 0) {
       items.push({ title: 'No system fonts found', state: () => ({ isEnabled: false }) });
+      return items;
     }
+    if (key === 'codeFontFamily') {
+      // Monospace-looking families up front; the rest tucked under "All Fonts".
+      const mono = families.filter(isLikelyMonospace);
+      if (mono.length > 0) {
+        items.push(...mono.map((f) => fontMenuItem(key, f)));
+        items.push({ separator: true });
+        items.push({ title: 'All Fonts', children: families.map((f) => fontMenuItem(key, f)) });
+        return items;
+      }
+    }
+    items.push(...families.map((f) => fontMenuItem(key, f)));
     return items;
   };
 

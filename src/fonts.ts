@@ -67,6 +67,15 @@ function parseFileName(fileName: string): { family: string; style: 'normal' | 'b
   return { family: words.join(' '), style };
 }
 
+const MONO_KEYWORDS = /mono|code|courier|console|term|fixed|typewriter|menlo|consol/;
+const MONO_NAMES = new Set(['hack', 'inconsolata', 'iosevka', 'monaco', 'pragmata pro', 'fantasque sans', 'monoid', 'agave']);
+
+/** Name-based heuristic; parsing every TTF's isFixedPitch flag would be too slow. */
+export function isLikelyMonospace(family: FontFamily): boolean {
+  const name = family.name.toLowerCase();
+  return MONO_KEYWORDS.test(name) || MONO_NAMES.has(name);
+}
+
 let familiesCache: FontFamily[] | undefined;
 
 export async function scanFontFamilies(): Promise<FontFamily[]> {
