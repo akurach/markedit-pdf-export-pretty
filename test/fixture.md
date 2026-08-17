@@ -1,20 +1,20 @@
 ---
-title: Полный прогон Markdown
+title: Full Markdown Showcase
 tags: [test]
 ---
 
-# Полный прогон
+# Full Markdown Showcase
 
-Абзац с `inline code`, ~~зачёркнутым~~, ==выделенным==, H~2~O и x^2^. Сноска[^1].
+A paragraph with `inline code`, ~~strikethrough~~, ==highlight==, H~2~O and x^2^. A footnote[^1].
 
-## Код с подсветкой
+## Syntax-highlighted code
 
 ```js
-// Комментарий однострочный
-/* Многострочный
-   комментарий */
+// A single-line comment
+/* A multi-line
+   comment */
 function greet(name) {
-  const message = `Привет, ${name}!`;
+  const message = `Hello, ${name}!`;
   return message.length > 10 ? message : null;
 }
 ```
@@ -24,23 +24,23 @@ import os
 
 def main():
     """Docstring."""
-    print("Кириллица в коде: привет")
+    print("Answer:", 42)
     return 42
 ```
 
-## Задачи
+## Tasks
 
-- [x] сделанная задача
-- [ ] несделанная задача
-- обычный пункт
+- [x] a completed task
+- [ ] a pending task
+- a regular item
 
 ## Definition list
 
-Термин
-: Определение термина с пояснением.
+Term
+: The definition of the term, with details.
 
-Второй термин
-: Ещё одно определение.
+Another term
+: One more definition.
 
 ## SVG inline
 
@@ -49,13 +49,17 @@ def main():
 ## Callout
 
 > [!TIP]
-> Совет с `кодом внутри` и **жирным**.
+> A tip with `inline code` and **bold text**.
 
-## Таблица
+## Table
 
-| Функция | Статус | Примечание |
-|---------|:------:|------------|
-| Код     | ✓      | подсветка  |
-| Сноски  | ✓      | внизу      |
+| Feature   | Status | Notes       |
+|-----------|:------:|-------------|
+| Code      | done   | highlighted |
+| Footnotes | done   | at the end  |
 
-[^1]: Текст сноски с [ссылкой](https://example.com).
+## Cyrillic support
+
+Кириллица работает из коробки: **жирный**, *курсив* и `код с кириллицей` — съешь ещё этих мягких французских булок.
+
+[^1]: Footnote text with a [link](https://example.com).
