@@ -2,7 +2,7 @@
 
 **English** | [Русский](README.ru.md)
 
-A [MarkEdit](https://markedit.app) extension that exports the current Markdown document as a nicely rendered PDF — headings, lists, tables, code blocks, blockquotes, links, and images, with Cyrillic support. Not a dump of raw Markdown.
+A [MarkEdit](https://github.com/MarkEdit-app/MarkEdit) extension that exports the current Markdown document as a nicely rendered PDF — headings, lists, tables, code blocks, blockquotes, links, and images, with Cyrillic support. Not a dump of raw Markdown.
 
 ![Markdown source and the exported PDF side by side](screenshots/editor-and-pdf.png)
 
