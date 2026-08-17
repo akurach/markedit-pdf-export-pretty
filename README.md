@@ -4,9 +4,13 @@
 
 A [MarkEdit](https://markedit.app) extension that exports the current Markdown document as a nicely rendered PDF — headings, lists, tables, code blocks, blockquotes, links, and images, with Cyrillic support. Not a dump of raw Markdown.
 
+![Markdown source and the exported PDF side by side](screenshots/editor-and-pdf.png)
+
 ## Usage
 
 In MarkEdit: **Extensions → PDF Export → Export as PDF…** (or ⌘⇧E), pick where to save.
+
+![The PDF Export menu](screenshots/menu.png)
 
 **Extensions → PDF Export → Text Font / Code Font** let you pick any installed system font (`.ttf`/`.otf`) for body text and code respectively; choices are remembered. Defaults: Roboto for text, JetBrains Mono for code (both embedded — macOS system monospace fonts like Menlo and SF Mono are `.ttc` collections, which pdfmake cannot embed).
 
