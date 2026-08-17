@@ -67,7 +67,6 @@ env/
 .eggs/
 
 # --- Build / output ---
-dist/
 build/
 out/
 target/
@@ -106,7 +105,6 @@ backups/
 # --- project-specific rules below this line ---
 
 # Build
-dist/
 node_modules/
 test/.smoke.mjs
 test/smoke-output.pdf

@@ -13,7 +13,7 @@ export default defineConfig({
     lib: {
       entry: 'src/main.ts',
       formats: ['cjs'],
-      fileName: () => 'markedit-pdf-export-pretty.cjs',
+      fileName: () => 'markedit-pdf-export-pretty.js',
     },
   },
 });

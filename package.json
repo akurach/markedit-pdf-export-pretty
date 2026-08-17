@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
-    "install-script": "npm run build && cp dist/markedit-pdf-export-pretty.cjs \"$HOME/Library/Containers/app.cyan.markedit/Data/Documents/scripts/markedit-pdf-export-pretty.js\" && echo 'Installed. Restart MarkEdit.'",
+    "install-script": "npm run build && cp dist/markedit-pdf-export-pretty.js \"$HOME/Library/Containers/app.cyan.markedit/Data/Documents/scripts/markedit-pdf-export-pretty.js\" && echo 'Installed. Restart MarkEdit.'",
     "typecheck": "tsc --noEmit",
     "smoke": "esbuild test/smoke-entry.mjs --bundle --platform=node --format=esm --external:jsdom --external:markdown-it --external:highlight.js --external:markdown-it-footnote --external:markdown-it-task-lists --external:markdown-it-deflist --external:markdown-it-mark --external:markdown-it-sub --external:markdown-it-sup --outfile=test/.smoke.mjs --banner:js=\"import { createRequire } from 'node:module'; const require = createRequire(import.meta.url);\" && node test/.smoke.mjs && rm -f test/.smoke.mjs"
   },
