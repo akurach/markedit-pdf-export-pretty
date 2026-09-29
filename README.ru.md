@@ -10,6 +10,8 @@
 
 В MarkEdit: **Extensions → PDF Export → Export as PDF…** (или ⌘⇧E), выбери, куда сохранить.
 
+Для печати: **Extensions → PDF Export → Print via Preview…** (или ⌥⌘P). PDF откроется в Preview (или в приложении, которое открывает PDF на твоём Mac), там нажми ⌘P. В API расширений MarkEdit нет вызова печати, а встроенный File → Print в MarkEdit печатает исходный Markdown.
+
 ![Меню PDF Export](screenshots/menu.png)
 
 **Extensions → PDF Export → Text Font / Code Font** — выбор любого установленного системного шрифта (`.ttf`/`.otf`) для основного текста и кода соответственно; выбор запоминается. По умолчанию: Roboto для текста, JetBrains Mono для кода (оба встроены — системные моноширинные шрифты macOS вроде Menlo и SF Mono являются `.ttc`-коллекциями, которые pdfmake встраивать не умеет).

@@ -9,7 +9,19 @@ import type { FontFamily } from './fonts';
 
 let exporting = false;
 
-async function exportAsPdf(): Promise<void> {
+type Deliver = (data: string, fileName: string) => Promise<unknown>;
+
+const saveWithPanel: Deliver = (data, fileName) => MarkEdit.showSavePanel({ data, fileName });
+
+/** The extension API cannot print, so hand the PDF to Preview, where ⌘P prints it. */
+const openInPreview: Deliver = async (data, fileName) => {
+  const path = `${MarkEdit.getDirectoryPath('temporary')}/${fileName}`;
+  if (!(await MarkEdit.createFile({ path, data, overwrites: true })) || !(await MarkEdit.openFile(path))) {
+    throw new Error(`Could not open ${path}.`);
+  }
+};
+
+async function exportAsPdf(deliver: Deliver): Promise<void> {
   if (exporting) {
     return;
   }
@@ -29,7 +41,7 @@ async function exportAsPdf(): Promise<void> {
     const useCustomFont = await prepareFonts();
     const { html, title } = await renderMarkdown(source, fileInfo?.parentPath);
     const data = await buildPdf(html, title ?? baseName, useCustomFont);
-    await MarkEdit.showSavePanel({ data, fileName: `${baseName}.pdf` });
+    await deliver(data, `${baseName}.pdf`);
   } catch (error) {
     await MarkEdit.showAlert({
       title: 'PDF export failed',
@@ -106,7 +118,13 @@ async function buildMenu(): Promise<void> {
         title: 'Export as PDF…',
         key: 'E',
         modifiers: ['Command', 'Shift'],
-        action: () => { void exportAsPdf(); },
+        action: () => { void exportAsPdf(saveWithPanel); },
+      },
+      {
+        title: 'Print via Preview…',
+        key: 'p',
+        modifiers: ['Command', 'Option'],
+        action: () => { void exportAsPdf(openInPreview); },
       },
       { separator: true },
       {
